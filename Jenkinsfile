@@ -25,6 +25,17 @@ pipeline {
         //         git url:"https://github.com/suresh093/foodiespipeline.git"
         //     }
         // }
+        stage('BUILD'){
+            steps {
+                sh 'mvn clean install -DskipTests'
+            }
+            post {
+                success {
+                    echo 'Now Archiving...'
+                    archiveArtifacts artifacts: '**/target/*.war'
+                }
+            }
+        }
         stage('test') {
             steps {
                 sh(script: 'mvn --batch-mode  test')
