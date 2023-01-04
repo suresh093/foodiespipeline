@@ -19,12 +19,12 @@ pipeline {
         timeout(time: 1, unit: 'HOURS')
     }
     stages {
-        stage('checkout') {
-            steps {
-                //git url:"https://${FOODIES_GIT_PAT}@github.com/techsriman/foodies.git"
-                git url:"https://github.com/suresh093/foodiespipeline.git"
-            }
-        }
+        // stage('checkout') {
+        //     steps {
+        //         //git url:"https://${FOODIES_GIT_PAT}@github.com/techsriman/foodies.git"
+        //         git url:"https://github.com/suresh093/foodiespipeline.git"
+        //     }
+        // }
         stage('test') {
             steps {
                 sh(script: 'mvn --batch-mode  test')
