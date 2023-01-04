@@ -1,0 +1,15 @@
+version: 0.0
+os: linux
+files:
+  - source: /foodies.war
+    destination: /home/ec2-user/apache-tomcat-9.0.70/webapps/
+
+hooks:
+  AfterInstall:
+    - location: serverStart.sh
+      timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: serverStop.sh
+      timeout: 300
+      runas: root    
