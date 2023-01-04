@@ -1,7 +1,8 @@
 pipeline {
-    agent {
-        label 'jenkinsslave2'
-    }
+    // agent {
+    //     label 'jenkinsslave2'
+    // }
+    agent any
     environment {
         //FOODIES_GIT_PAT = credentials('pattoken')
         TOMCAT_DOWNLOAD_URL = 'https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.70/bin/apache-tomcat-9.0.70.tar.gz'
