@@ -42,6 +42,22 @@ pipeline {
                 //-Dmaven.test.failure.ignore=true
             }
         }
+        stage('INTEGRATION TEST'){
+            steps {
+                sh 'mvn verify -DskipUnitTests'
+            }
+        }
+        stage ('CODE ANALYSIS WITH CHECKSTYLE'){
+            steps {
+                sh 'mvn checkstyle:checkstyle'
+            }
+            post {
+                success {
+                    echo 'Generated Analysis Result'
+                }
+            }
+        }
+
         stage('package') {
             steps {
                 sh(script: 'mvn --batch-mode package -DskipTests')
