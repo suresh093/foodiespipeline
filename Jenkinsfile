@@ -58,6 +58,31 @@ pipeline {
             }
         }
 
+        stage('CODE ANALYSIS with SONARQUBE') {
+          
+          environment {
+             scannerHome = tool 'sonarscanner4'
+          }
+
+          steps {
+            withSonarQubeEnv('sonar-pro') {
+               sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=foodies-pipeline \
+                   -Dsonar.projectName=foodies-pipeline \
+                   -Dsonar.projectVersion=1.0 \
+                   -Dsonar.sources=src/ \
+                   -Dsonar.java.binaries=target/test-classes/com/foodies/controller/ \
+                   -Dsonar.junit.reportsPath=target/surefire-reports/ \
+                   -Dsonar.jacoco.reportsPath=target/jacoco.exec \
+                   -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml'''
+            }
+
+            timeout(time: 10, unit: 'MINUTES') {
+               waitForQualityGate abortPipeline: true
+            }
+          }
+        }
+
+
         stage('package') {
             steps {
                 sh(script: 'mvn --batch-mode package -DskipTests')
