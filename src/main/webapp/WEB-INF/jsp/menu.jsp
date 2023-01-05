@@ -341,7 +341,7 @@
          			<h4>Open Hours</h4>
 	         		<ul class="list-unstyled open-hours">
 		                <li class="d-flex justify-content-between"><span>Monday1</span><span>9:00 - 24:00</span></li>
-		                <li class="d-flex justify-content-between"><span>Tuesday</span><span>9:00 - 24:00</span></li>
+		                <li class="d-flex justify-content-between"><span>Tuesday1</span><span>9:00 - 24:00</span></li>
 		                <li class="d-flex justify-content-between"><span>Wednesday</span><span>9:00 - 24:00</span></li>
 		                <li class="d-flex justify-content-between"><span>Thursday</span><span>9:00 - 24:00</span></li>
 		                <li class="d-flex justify-content-between"><span>Friday</span><span>9:00 - 02:00</span></li>
